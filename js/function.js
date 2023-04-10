@@ -2,9 +2,24 @@
 // создаем шарик и добовляем в игровое поле
 function sozdanieBoll() {
 	// создаем блок div
-	var boll = document.createElement("div");
+        var boll = document.createElement("div");
+	 var randomfruit = random(2);
+    if(randomfruit == 1) {
+        boll.style.background = "url('img/2.png') no-repeat";
+        boll.style.width = "60px";
+        boll.style.height = "60px";
+        boll.style.backgroundSize = "50px";
+    }
+    if(randomfruit == 2) {
+        boll.style.background = "url('img/3.png') no-repeat";
+        boll.style.width = "60px";
+        boll.style.height = "60px";
+        boll.style.backgroundSize = "50px";
+    }
     // выводим в консоль
     console.dir(boll);
+
+
     
     // 1 - left, 2 - right
     var napravlenie = random(2); 
@@ -29,10 +44,10 @@ function sozdanieBoll() {
     // менем местоположение шарика на 10 пикс вправо
     boll.style.right = boll.offsetRight + 10 + "px";
     // при каждом клики на шарик цвет меняеться на жолтый и на синий  
-if (boll.style.background == "yellow")
-    boll.style.background = "blue";
-else
-    boll.style.background = "yellow";
+// if (boll.style.background == "yellow")
+//     boll.style.background = "blue";
+// else
+//     boll.style.background = "yellow";
 
 boll.style.opacity = "0";
      //удаляем шарик
@@ -60,8 +75,8 @@ boll.style.opacity = "0";
  }
 
 setTimeout(function() {
-    boll.style.top = random(350) + "px";
-    boll.style.left = random(550) + "px";
+    boll.style.top = random(600) + "px";
+    boll.style.left = random(1050) + "px";
 }, 200)
 
 setTimeout(function() {
@@ -72,7 +87,7 @@ setTimeout(function() {
         // создаем таймер который каждые 10 милисикунд опускал шарик вниз
         boll.style.top = boll.offsetTop + 1 + "px";
         // если шарик вышел за приделы поля
-        if(boll.offsetTop > 500) {
+        if(boll.offsetTop > 650) {
             // удаляем шарик
             boll.remove();
             // создаем шарик
@@ -144,12 +159,11 @@ function sozdanieStartBlock() {
     // создаем кнопку button <button id="start-knopka">Начать</button>
     startKnopka = document.createElement("button");
     startKnopka.id = "start-knopka";
-    startKnopka.innerText = "Начать";
+    // startKnopka.innerText = "Начать";
     // добавляем кнопку в стартовый блок
     startBlock.appendChild(startKnopka);
     // добавляем стартовый блок в игровое поле
     igraPole.appendChild(startBlock);
-
  }
 /*
 <div id="stars">0</div>
@@ -184,7 +198,7 @@ function sozdanieLifesBlock() {
         tekucheeColichestvospan =  tekucheeColichestvospan + 1;
         }
     igraPole.appendChild(lifes);
-    console.dir(lifes);
+    console.dir(lifes);  
 
 }
 
@@ -192,7 +206,7 @@ function sozdanieLifesBlock() {
 function sozdanieTimerBlock() {
     // создаем заголовок h2 с текстом "Время:";
     var h2 = document.createElement("h2");
-    h2.innerText = "Время:";
+    h2.innerText = "Time:";
 
     // в коробчку timerBlock добавляем тег span
     timerBlock = document.createElement("span");
@@ -214,17 +228,18 @@ function sozdanieTimerBlock() {
 function sozdanieKonecIgra() {
     // создаем блок <div id="konec-igra"></div>
     var konecIgra = document.createElement("div");
-    konecIgra.id = "konec-igra";
-
-    var h2 = document.createElement("h2");
-    h2.innerText = "Игра окончена!";
+        konecIgra.id = "konec-igra";
+    var img = document.createElement('div');
+        img.id = 'game-over';
     var h3 = document.createElement("h3");
     h3.innerText = "Вы набрали: " + ochki + "очков";
 
-    konecIgra.appendChild(h2);
     konecIgra.appendChild(h3);
+    konecIgra.appendChild(img);
     igraPole.appendChild(konecIgra);
 }
+
+// Expected output: 0, 1 or 2
 
 /*====================
 Удаление элементов
@@ -237,6 +252,19 @@ function udalenieStartBlock() {
 
 function udalenieLifesBlock() {
         lifes.remove();
+
+        redLifes = document.createElement("div");
+        redLifes.id = "red";
+        // текушее количкство жизней
+        var redLifesColl = 0;
+        // цыкл жизней
+         while(redLifesColl < collSpan) {
+                var span = document.createElement("span");
+                redLifes.appendChild(span);
+            redLifesColl =  redLifesColl + 1;
+            }
+        igraPole.appendChild(redLifes);
+        console.dir(redLifes);
 }
 
 function udalenieStarsBlock() {
@@ -244,4 +272,11 @@ function udalenieStarsBlock() {
 }
 function ochistenieIgraPole() {
     igraPole.innerText = "";
+}
+function igraBeforeAfter() {
+    var div = document.getElementById('igra');
+    div.className = 'new'; // задать класс
+}
+function udalenieTimerBlock() {
+    h2.remove();
 }

@@ -1,43 +1,86 @@
 #igra {
-	background: #505050;
-	width: 600px;
-	height: 400px;
+	background: url(../img/background.jpg);
+	width: 1100px; /* 600 */
+	height: 700px; /* 400 */
 	margin: 0 auto;
 	position: relative;
 	border: 2px solid grey;
 	overflow: hidden;
+	background-size: 1100px;
+	display: block;
 }
+#igra::after {
+	content: '';
+	width: 400px;
+	height: 100px;
+	display: inline-block;
+	margin-left: calc(50% - 200px);
+	margin-right: calc(50% - 200px);
+	background: url('../img/header.png');
+	background-size: 400px;
+	display: block;
+}
+#igra::before {
+	content: '';
+	width: 100%;
+	height: 110px;
+	display: inline-block;
+	background-color: rgba(0,0,0,.5);
+	position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+#igra.new:before {display: none;}
+#igra.new:after {display: none;}
 
 .boll {
-	background: yellow;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%; 
+	background: url('../img/1.png') no-repeat;
+	width: 60px;
+	height: 60px;
+/*	border-radius: 50%;*/
 	position: absolute;
 	top: -100px;
 	right: -100px;
 	display: block;
 	transition: all 0.2s;
+	background-size: 50px;
 }
 
 .left {
-	top: 500px;
+	top: 700px;
 	left: -100px;
+	display: block;
 }
 
 .right {
-	top: 500px;
-	left: 700px;
+	top: 700px;
+	left: 1100px;
+	display: block;
 }
 
 #stars {
 	font-size: 34px;
-	color: white;
 	font-weight: bold;
 	position: absolute;
 	top: 10px;
 	left: 20px;
 	display: block;
+	/* градиент	*/
+	color: transparent;    
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(to bottom, #efdb5e, #cc8415);
+}
+#stars::before {
+	content: '';
+	width: 22px;
+	height: 26px;
+	background: red;
+	display: inline-block;
+	margin-right: 10px;
+	background: url('../img/watermelon.png');
+	background-size: 22px;
 }
 
 #lifes {
@@ -48,39 +91,109 @@
 }
 
 #lifes span {
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	border: 3px solid #fff;
-	background: pink;
+	width: 20px;
+	height: 20px;
 	display: block;
 	float: left;
+	background: url('../img/cross.png');
+	background-size: 21px;
+}
+#red {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: none;
+}
+#red span {
+	width: 20px;
+	height: 20px;
+	display: block;
+	float: left;
+	background: url('../img/cross-red.png');
+	background-size: 21px;
 }
 
 #start-block {
 	width: 100%;
 	height: 100%;
-	background: #fff;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
 
 #start-block button {
-	margin: 100px auto;
-	display: block;
+	/*margin: 100px auto;
+	
 	padding: 40px 80px;
-	font-size: 34px;
+	font-size: 34px;*/
+
+	margin: 250px auto;
+	display: block;
+	padding: 0;
+	background: url('../img/start-game.png');
+	border: none;
+	width: 200px;
+	height: 200px;
+	background-size: 200px;
 }
 
 #konec-igra {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background: #9400D3;
-	color: white;
-	text-align: center;
-	font-size: 30px;
+	background: url(../img/background.jpg);
+	width: 1100px; /* 600 */
+	height: 700px; /* 400 */
+	margin: 0 auto;
+	position: relative;
+	border: 2px solid grey;
+	overflow: hidden;
+	background-size: 1100px;
+	display: block;
+}
+#konec-igra h3 {
+	position: relative;
+  text-align: center;
+  top: 320px;
+  font-size: 30px;
+  /* Градиент	*/
+	color: transparent;    
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(to bottom, #efdb5e, #cc8415);
+}
+
+#game-over {
+	background: url('../img/game-over.png') no-repeat;
+	width: 400px;
+	height: 65px;
+	background-size: 400px;
+	margin: 0 auto;
+	margin-top: 200px;
+}
+.follow-cursor {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  transform: translateY(-50%) translateX(-50%); /* центрируем кружок */
+  position: absolute; /* задаём абсолютное позиционирование, чтобы элемент не влиял на остальные элементы и его можно было бы позиционировать следом за курсором */
+  z-index: 999; /* чтобы элемент был над остальными элементами */
+  pointer-events: none; /* чтобы сквозь элемент можно было взаимодействовать с элементами, находящимися под ним */
+  transition: width 0.64s, height 0.64s, border-radius 0.64s, background 0.64s;
+}
+
+#info-block {
+	position: relative;
+	margin: 0 auto;
+	width: 85px;
+	top: 10px;
+	z-index: 10;
+	
+}
+#info-block h2 {
+	margin: 0;
+	/* Градиент	*/
+	color: transparent;    
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(to bottom, #efdb5e, #cc8415);
 }

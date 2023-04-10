@@ -6,7 +6,8 @@ var lifes = null;
 var ochki = 0;
 
 // сколько жизней хочу сделать
-    var colichestvoSpan = 5;
+    var colichestvoSpan = 3;
+    var collSpan = 3;
 // помешяем в переменную стартовый блок
 var startBlock = null;
   // помешяем в переменную кнопку старта

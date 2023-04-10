@@ -3,18 +3,25 @@ function Start() {
 
 sozdanieStartBlock();
 
-startKnopka.onclick = nachat; 
-    sozdanieTimerBlock();
+startKnopka.onmousemove = nachat;
+    
 
 
     // startBlock.style.display = "none";
     // startBlock.style.display = ("start-block");
-    
+
 
 }
 
 function nachat() {
+    igraBeforeAfter();
 	sozdanieBoll();
+    sozdanieTimerBlock();
+
+    // var boll = document.createElement("div");
+    // boll.className = "boll left";
+    // igraPole.appendChild(boll);
+    
 	sozdanieOchkiBlock();
     sozdanieLifesBlock();
     udalenieStartBlock();
@@ -31,6 +38,7 @@ function koniecIgra() {
     ochistenieIgraPole();
     sozdanieKonecIgra();
 	}, 200)
+    udalenieTimerBlock();
 
 }
 //функция для обратного отчета игры
@@ -41,6 +49,6 @@ function timerIgra() {
             clearInterval(chasy);
             console.dir(stars);
             koniecIgra();
-        } 
+        }
     }, 1000);
 }
